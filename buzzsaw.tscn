@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://d08g6x3vxuctf"]
+
+[ext_resource type="Texture2D" uid="uid://c43313bb07h7a" path="res://buzzsaw.png" id="1_52u5w"]
+[ext_resource type="PackedScene" uid="uid://lqsrl2480sr4" path="res://hazard_area.tscn" id="2_v87nq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wkghy"]
+radius = 23.0
+
+[node name="buzzsaw" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = ExtResource("1_52u5w")
+
+[node name="HazardArea" parent="." instance=ExtResource("2_v87nq")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HazardArea"]
+position = Vector2(-1, -2)
+shape = SubResource("CircleShape2D_wkghy")

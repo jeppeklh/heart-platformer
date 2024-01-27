@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://blrocoqo7icil"]
+
+[ext_resource type="Script" path="res://world.gd" id="1_nxpoi"]
+[ext_resource type="PackedScene" uid="uid://d2yd5vo6m71au" path="res://player.tscn" id="2_voblk"]
+[ext_resource type="PackedScene" uid="uid://bw3tmylxnuk33" path="res://death_screen.tscn" id="4_rud1m"]
+[ext_resource type="PackedScene" uid="uid://c6bc83co5y5vv" path="res://level_completed.tscn" id="5_xjlgr"]
+[ext_resource type="PackedScene" uid="uid://fdlebd16bic8" path="res://hearts_label.tscn" id="6_81rpc"]
+[ext_resource type="PackedScene" uid="uid://bwd0fpmyx6sk2" path="res://level_tile_map.tscn" id="6_oeujp"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_nxpoi")
+
+[node name="Player" parent="." instance=ExtResource("2_voblk")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="LevelCompleted" parent="CanvasLayer" instance=ExtResource("5_xjlgr")]
+visible = false
+
+[node name="DeathScreen" parent="CanvasLayer" instance=ExtResource("4_rud1m")]
+visible = false
+
+[node name="Label" parent="CanvasLayer" instance=ExtResource("6_81rpc")]
+anchor_left = 0.944
+anchor_top = 0.022
+anchor_right = 1.019
+anchor_bottom = 0.111
+offset_left = -0.0800171
+offset_top = 0.0399997
+offset_right = -0.0800171
+offset_bottom = 0.0199986
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 6
+text = "0/0"
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 4.0
+offset_bottom = 12.0
+grow_horizontal = 2
+
+[node name="LevelTimeLabel" type="Label" parent="CanvasLayer/CenterContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+vertical_alignment = 1
+
+[node name="hearts" type="Node2D" parent="."]
+
+[node name="LevelTileMap" parent="." instance=ExtResource("6_oeujp")]
+
+[connection signal="next_level" from="CanvasLayer/LevelCompleted" to="." method="_on_level_completed_next_level"]
+[connection signal="retry" from="CanvasLayer/LevelCompleted" to="." method="_on_level_completed_retry"]

@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://fdlebd16bic8"]
+
+[node name="Label" type="Label"]
+anchors_preset = -1
+anchor_left = 0.95
+anchor_right = 1.0
+anchor_bottom = 0.089
+offset_left = -8.0
+offset_right = -8.0
+offset_bottom = -0.0200005
+theme_override_font_sizes/font_size = 10
+text = "0/5"
